@@ -26,6 +26,7 @@ namespace ToDoListManagerRevisited.Controllers
         [HttpPost]
         public IActionResult CreateAssignment(Assignment assignment)
         {
+            assignment.AssignmentCompletionStatus = false;
             if (ModelState.IsValid)
             {
                 _capstoneToDoList.Assignment.Add(assignment);
@@ -70,5 +71,39 @@ namespace ToDoListManagerRevisited.Controllers
             Assignment assignment = _capstoneToDoList.Assignment.Find(AssignmentId);
             return RedirectToAction("ViewAssignment", assignment);
         }
+        public IActionResult Delete(int Id)
+        {
+            Assignment assignment = _capstoneToDoList.Assignment.Find(Id);
+            return View(assignment);
+            
+        }
+        [HttpPost]
+        public IActionResult Delete(Assignment assignment)
+        {
+            if (ModelState.IsValid)
+            {
+                _capstoneToDoList.Assignment.Remove(assignment);
+                _capstoneToDoList.SaveChanges();
+
+            }
+            
+            return RedirectToAction("ViewAll");
+        }
+
+        public IActionResult MarkComplete(int Id)
+        {
+            Assignment assignment = _capstoneToDoList.Assignment.Find(Id);
+
+            assignment.AssignmentCompletionStatus = true;
+            assignment.AssignmentId = assignment.AssignmentId;
+            assignment.AssignmentDueDate = assignment.AssignmentDueDate;
+            assignment.AssignmentDescription = assignment.AssignmentDescription;
+            assignment.AssignedUserName = assignment.AssignedUserName;
+            
+            _capstoneToDoList.SaveChanges();
+            return RedirectToAction("ViewAssignment", assignment);
+        }
+
+
     }
 }

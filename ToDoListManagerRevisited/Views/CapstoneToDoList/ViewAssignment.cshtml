@@ -2,8 +2,9 @@
 
 <h4>Assignment @Model.AssignmentId:</h4>
 
-<ul>
+
     <li>Due Date: @Model.AssignmentDueDate.ToString("d")</li>
+    <p>Assigned User: @Model.AssignedUserName</p>
     
     <li>Description: @Model.AssignmentDescription</li>
     @if (Model.AssignmentCompletionStatus == true)
@@ -14,7 +15,6 @@
     {
         <li>Complete: No</li>
     }
-</ul>
 <a asp-action="Delete" asp-controller="CapstoneToDoList" asp-route-id="@Model.AssignmentId">
     <button>
         Delete
@@ -38,7 +38,7 @@
         </button>
     </a>
 }
-else
+else if (Model.AssignmentCompletionStatus == true)
 {
 
     <a asp-action="MarkIncomplete" asp-controller="CapstoneToDoList">

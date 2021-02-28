@@ -152,7 +152,7 @@ namespace ToDoListManagerRevisited.Models
                     .HasPrincipalKey(p => p.UserName)
                     .HasForeignKey(d => d.AssignedUserName)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Assignmen__Assig__5DCAEF64");
+                    .HasConstraintName("FK__Assignmen__Assig__60A75C0F");
             });
 
             OnModelCreatingPartial(modelBuilder);
