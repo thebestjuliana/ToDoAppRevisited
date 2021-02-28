@@ -20,7 +20,8 @@ namespace ToDoListManagerRevisited.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index","CapstoneToDoList");
+            
         }
 
         public IActionResult Privacy()

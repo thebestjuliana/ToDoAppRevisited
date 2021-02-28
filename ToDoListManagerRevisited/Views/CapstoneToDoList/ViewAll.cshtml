@@ -1,0 +1,15 @@
+﻿@model List<Assignment>
+    <h2>Select a Task to View</h2>
+    <form method="post">
+
+        @foreach (Assignment assignment in Model)
+        {
+        <label>Assignment #@assignment.AssignmentId</label>
+        <input type="radio" name="AssignmentId" value="@assignment.AssignmentId"/>
+        <p>@assignment.AssignmentDescription</p>
+        
+        <br />
+        }
+
+    <input type="submit" name="View Task" />
+    </form>

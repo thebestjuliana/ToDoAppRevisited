@@ -94,3 +94,4 @@ C:\Users\sheeh\source\repos\ToDoListManagerRevisited\ToDoListManagerRevisited\ob
 C:\Users\sheeh\source\repos\ToDoListManagerRevisited\ToDoListManagerRevisited\obj\Debug\netcoreapp3.1\Razor\Views\CapstoneToDoList\Index.cshtml.g.cs
 C:\Users\sheeh\source\repos\ToDoListManagerRevisited\ToDoListManagerRevisited\obj\Debug\netcoreapp3.1\Razor\Views\CapstoneToDoList\ViewAssignment.cshtml.g.cs
 C:\Users\sheeh\source\repos\ToDoListManagerRevisited\ToDoListManagerRevisited\obj\Debug\netcoreapp3.1\Razor\Views\CapstoneToDoList\Update.cshtml.g.cs
+C:\Users\sheeh\source\repos\ToDoListManagerRevisited\ToDoListManagerRevisited\obj\Debug\netcoreapp3.1\Razor\Views\CapstoneToDoList\ViewAll.cshtml.g.cs

@@ -9,8 +9,8 @@ namespace ToDoListManagerRevisited.Models
         public DateTime AssignmentDueDate { get; set; }
         public string AssignmentDescription { get; set; }
         public bool? AssignmentCompletionStatus { get; set; } = false;
-        public string UserId { get; set; }
+        public string AssignedUserName { get; set; }
 
-        public virtual AspNetUsers User { get; set; }
+        public virtual AspNetUsers AssignedUserNameNavigation { get; set; }
     }
 }

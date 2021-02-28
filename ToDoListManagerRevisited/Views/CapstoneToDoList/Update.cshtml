@@ -8,14 +8,16 @@
     }
 </style>
 <form method="post">
-    <label>Task Due Date</label>
-    <br />
-    <input type="date" name="AssignmentDueDate" value="@Model.AssignmentDueDate" required>
+    <Label>Task Number</Label>
+    <input type="number" name="AssignmentId" value="@Model.AssignmentId" placeholder="@Model.AssignmentId" readonly />
+    <p>Previous Due Date: @Model.AssignmentDueDate</p>
+
+    <label>New Due Date:</label>
+    <input type="date" name="AssignmentDueDate" value="@Model.AssignmentDueDate" />
     <br />
     <input id="Description" type="text" name="AssignmentDescription" placeholder="Task Description" value="@Model.AssignmentDescription" />
     <br />
     <label>Assigned User:</label>
-    <br />
-    <input type="text" value="@Model.UserId" readonly />
+    <input type="text" name="AssignedUserName" value="@Model.AssignedUserName" readonly />
     <input type="submit" />
 </form>

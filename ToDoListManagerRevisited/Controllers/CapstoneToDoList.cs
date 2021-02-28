@@ -54,13 +54,21 @@ namespace ToDoListManagerRevisited.Controllers
             {
                 _capstoneToDoList.Assignment.Update(assignment);
                 _capstoneToDoList.SaveChanges();
-                return RedirectToAction("ViewAssignment", assignment);
+                
             }
-            else
-            {
-                //make this action/view!!!
-                return RedirectToAction("InvalidUpdate");
-            }
+            return RedirectToAction("ViewAssignment", assignment);
+        }
+
+        public IActionResult ViewAll()
+        {
+            return View(_capstoneToDoList.Assignment.ToList());
+        }
+
+        [HttpPost]
+        public IActionResult ViewAll(int AssignmentId)
+        {
+            Assignment assignment = _capstoneToDoList.Assignment.Find(AssignmentId);
+            return RedirectToAction("ViewAssignment", assignment);
         }
     }
 }

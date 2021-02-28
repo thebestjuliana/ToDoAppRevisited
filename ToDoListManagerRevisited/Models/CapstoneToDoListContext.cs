@@ -124,28 +124,35 @@ namespace ToDoListManagerRevisited.Models
                     .IsUnique()
                     .HasFilter("([NormalizedUserName] IS NOT NULL)");
 
+                entity.HasIndex(e => e.UserName)
+                    .HasName("UQ__AspNetUs__C9F28456498BB59C")
+                    .IsUnique();
+
                 entity.Property(e => e.Email).HasMaxLength(256);
 
                 entity.Property(e => e.NormalizedEmail).HasMaxLength(256);
 
                 entity.Property(e => e.NormalizedUserName).HasMaxLength(256);
 
-                entity.Property(e => e.UserName).HasMaxLength(256);
+                entity.Property(e => e.UserName)
+                    .IsRequired()
+                    .HasMaxLength(256);
             });
 
             modelBuilder.Entity<Assignment>(entity =>
             {
+                entity.Property(e => e.AssignedUserName)
+                    .IsRequired()
+                    .HasMaxLength(256);
+
                 entity.Property(e => e.AssignmentDueDate).HasColumnType("datetime");
 
-                entity.Property(e => e.UserId)
-                    .IsRequired()
-                    .HasMaxLength(450);
-
-                entity.HasOne(d => d.User)
+                entity.HasOne(d => d.AssignedUserNameNavigation)
                     .WithMany(p => p.Assignment)
-                    .HasForeignKey(d => d.UserId)
+                    .HasPrincipalKey(p => p.UserName)
+                    .HasForeignKey(d => d.AssignedUserName)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Assignmen__UserI__4E88ABD4");
+                    .HasConstraintName("FK__Assignmen__Assig__5DCAEF64");
             });
 
             OnModelCreatingPartial(modelBuilder);
