@@ -1,0 +1,48 @@
+﻿@model Assignment
+
+<h4>Assignment @Model.AssignmentId:</h4>
+
+<ul>
+    <li>Due Date: @Model.AssignmentDueDate.ToString("d")</li>
+    <li>Description: @Model.AssignmentDescription</li>
+    @if (Model.AssignmentCompletionStatus == true)
+    {
+        <li>Complete: Yes</li>
+    }
+    else
+    {
+        <li>Complete: No</li>
+    }
+</ul>
+<a asp-action="Delete" asp-controller="CapstoneToDoList" asp-route-id="@Model.AssignmentId">
+    <button>
+        Delete
+    </button>
+</a>
+<a asp-action="Update" asp-controller="CapstoneToDoList" asp-route-id="@Model.AssignmentId">
+    <button>
+        Edit
+    </button>
+</a>
+<a asp-action="Index" asp-controller="CapstoneToDoList">
+    <button>
+        Home
+    </button>
+</a>
+@if (Model.AssignmentCompletionStatus == false)
+{
+    <a asp-action="MarkComplete" asp-controller="CapstoneToDoList">
+        <button>
+            Mark Complete
+        </button>
+    </a>
+}
+else
+{
+
+    <a asp-action="MarkIncomplete" asp-controller="CapstoneToDoList">
+        <button>
+            Revert to Incomplete
+        </button>
+    </a>
+}

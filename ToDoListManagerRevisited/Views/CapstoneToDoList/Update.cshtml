@@ -1,0 +1,21 @@
+﻿@model Assignment
+
+<h2>Update Task @Model.AssignmentId</h2>
+<style>
+    #Description {
+        height: 100px;
+        text-align: left;
+    }
+</style>
+<form method="post">
+    <label>Task Due Date</label>
+    <br />
+    <input type="date" name="AssignmentDueDate" value="@Model.AssignmentDueDate" required>
+    <br />
+    <input id="Description" type="text" name="AssignmentDescription" placeholder="Task Description" value="@Model.AssignmentDescription" />
+    <br />
+    <label>Assigned User:</label>
+    <br />
+    <input type="text" value="@Model.UserId" readonly />
+    <input type="submit" />
+</form>
