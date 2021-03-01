@@ -3,18 +3,18 @@
 <h4>Assignment @Model.AssignmentId:</h4>
 
 
-    <li>Due Date: @Model.AssignmentDueDate.ToString("d")</li>
-    <p>Assigned User: @Model.AssignedUserName</p>
-    
-    <li>Description: @Model.AssignmentDescription</li>
-    @if (Model.AssignmentCompletionStatus == true)
-    {
-        <li>Complete: Yes</li>
-    }
-    else
-    {
-        <li>Complete: No</li>
-    }
+<li>Due Date: @Model.AssignmentDueDate.ToString("d")</li>
+<p>Assigned User: @Model.AssignedUserName</p>
+
+<li>Description: @Model.AssignmentDescription</li>
+@if (Model.AssignmentCompletionStatus == true)
+{
+    <li>Complete: Yes</li>
+}
+else
+{
+    <li>Complete: No</li>
+}
 <a asp-action="Delete" asp-controller="CapstoneToDoList" asp-route-id="@Model.AssignmentId">
     <button>
         Delete
@@ -30,20 +30,18 @@
         Home
     </button>
 </a>
-@if (Model.AssignmentCompletionStatus == false)
-{
-    <a asp-action="MarkComplete" asp-controller="CapstoneToDoList">
-        <button>
-            Mark Complete
-        </button>
-    </a>
-}
-else if (Model.AssignmentCompletionStatus == true)
-{
 
-    <a asp-action="MarkIncomplete" asp-controller="CapstoneToDoList">
+
+<a asp-action="MarkComplete" asp-controller="CapstoneToDoList">
+
+    @if (Model.AssignmentCompletionStatus == false)
+    {<button>
+            Mark Complete
+        </button>}
+    else
+    {
         <button>
             Revert to Incomplete
         </button>
-    </a>
-}
+    }
+</a>

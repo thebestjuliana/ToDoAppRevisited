@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using ToDoListManagerRevisited.Models;
 
 namespace ToDoListManagerRevisited.Controllers
 {
+    [Authorize]
     public class CapstoneToDoListController : Controller
     {
         private readonly CapstoneToDoListContext _capstoneToDoList;
@@ -14,6 +16,7 @@ namespace ToDoListManagerRevisited.Controllers
         {
             _capstoneToDoList = capstoneToDoListContext;
         }
+
 
         public IActionResult Index()
         {
@@ -55,14 +58,17 @@ namespace ToDoListManagerRevisited.Controllers
             {
                 _capstoneToDoList.Assignment.Update(assignment);
                 _capstoneToDoList.SaveChanges();
-                
+                return RedirectToAction("ViewAssignment", assignment);
             }
-            return RedirectToAction("ViewAssignment", assignment);
+            return RedirectToAction("Error");
         }
-
+        public IActionResult Error()
+        {
+            return View();
+        }
         public IActionResult ViewAll()
         {
-            return View(_capstoneToDoList.Assignment.ToList());
+            return View(_capstoneToDoList.Assignment.Where(x => x.AssignedUserName == User.Identity.Name).ToList());
         }
 
         [HttpPost]
@@ -71,11 +77,11 @@ namespace ToDoListManagerRevisited.Controllers
             Assignment assignment = _capstoneToDoList.Assignment.Find(AssignmentId);
             return RedirectToAction("ViewAssignment", assignment);
         }
-        public IActionResult Delete(int Id)
+        public IActionResult Delete(int id)
         {
-            Assignment assignment = _capstoneToDoList.Assignment.Find(Id);
+            Assignment assignment = _capstoneToDoList.Assignment.Find(id);
             return View(assignment);
-            
+
         }
         [HttpPost]
         public IActionResult Delete(Assignment assignment)
@@ -84,26 +90,22 @@ namespace ToDoListManagerRevisited.Controllers
             {
                 _capstoneToDoList.Assignment.Remove(assignment);
                 _capstoneToDoList.SaveChanges();
-
+                return RedirectToAction("ViewAll");
             }
+            else
+            {
+                return RedirectToAction("Error");
+            }
+
             
-            return RedirectToAction("ViewAll");
         }
 
-        public IActionResult MarkComplete(int Id)
+        public IActionResult MarkComplete(int id)
         {
-            Assignment assignment = _capstoneToDoList.Assignment.Find(Id);
-
-            assignment.AssignmentCompletionStatus = true;
-            assignment.AssignmentId = assignment.AssignmentId;
-            assignment.AssignmentDueDate = assignment.AssignmentDueDate;
-            assignment.AssignmentDescription = assignment.AssignmentDescription;
-            assignment.AssignedUserName = assignment.AssignedUserName;
+            Assignment assignment = _capstoneToDoList.Assignment.Find(id);
             
-            _capstoneToDoList.SaveChanges();
-            return RedirectToAction("ViewAssignment", assignment);
+            return View(assignment);
         }
-
 
     }
 }

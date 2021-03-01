@@ -1,27 +1,32 @@
-﻿@model List<AspNetUsers>
-    <h2>Add a new task to the To Do List!</h2>
-    <style>
-        #Description{
-            height:100px;
-            text-align:left;
-        }
-    </style>
-    <form method="post">
-        <label>Task Due Date</label>
-        <br />
-        <input type="date" name="AssignmentDueDate" required autofocus>
-        <br />
-        <input id="Description" type="text" name="AssignmentDescription" placeholder="Task Description" required/>
-        <br />
-        <label>Select assigned User:</label>
-        <br />
-        <select name="AssignedUserName" >
-            <option value="" disabled>--Select a User to Assign to this Task--</option>
+﻿@using Microsoft.AspNetCore.Identity
+@model List<AspNetUsers>
+@inject UserManager<IdentityUser> UserManager
+<h2>Add a new task to the To Do List!</h2>
+<style>
+    #Description {
+        height: 100px;
+        text-align: left;
+    }
+</style>
+<form method="post">
+    <label>Task Due Date</label>
+    <br />
+    <input type="date" name="AssignmentDueDate" required autofocus>
+    <br />
+    <input id="Description" type="text" name="AssignmentDescription" placeholder="Task Description" required />
+    <br />
+    <label>Select assigned User:</label>
+    <br />
+    @*<select name="">*@
+    @*<input type="text" name="AssignedUserName" value="@Model.Where(x => x.UserName == User.Identity.Name)" />
+        <option value="" disabled>--Select a User to Assign to this Task--</option>*@
 
-            @foreach (AspNetUsers user in Model)
-            {
-                <option value="@user.UserName">@user.UserName</option>
-            }
-        </select>
-        <input type="submit" />
-    </form>
+    @foreach (AspNetUsers users in Model.Where(x => x.UserName == User.Identity.Name))
+    {
+
+        <input type="text" name="AssignedUserName" value="@users.UserName" readonly/>
+        @*<option value="@users.UserName">@users.UserName</option>*@
+    }
+    @*</select>*@
+    <input type="submit" />
+</form>

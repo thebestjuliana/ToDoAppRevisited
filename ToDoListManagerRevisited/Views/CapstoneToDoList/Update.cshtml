@@ -10,16 +10,26 @@
 <form method="post">
     <Label>Task Number</Label>
     <input type="number" name="AssignmentId" value="@Model.AssignmentId" placeholder="@Model.AssignmentId" readonly />
-    <p>Previous Due Date: @Model.AssignmentDueDate</p>
 
-    <label>New Due Date:</label>
-    <input type="date" name="AssignmentDueDate" value="@Model.AssignmentDueDate" />
+    <Label>Due Date:</Label>
+    <input type="datetime" name="AssignmentDueDate" value="@Model.AssignmentDueDate" />
+    
     <br />
     <input id="Description" type="text" name="AssignmentDescription" placeholder="Task Description" value="@Model.AssignmentDescription" />
     <br />
     <label>Assigned User:</label>
     <input type="text" name="AssignedUserName" value="@Model.AssignedUserName" readonly />
     <label>Task Complete:</label>
-   
-    <input type="submit" placeholder="Submit Changes"/>
+    @if (Model.AssignmentCompletionStatus == true)
+    {
+        <label>Complete:</label><input type="radio" name="AssignmentCompletionStatus" value="true" required checked />
+        <label>Incomplete:</label><input type="radio" name="AssignmentCompletionStatus" value="false" required />
+    }
+    else
+    {
+        <label>Complete:</label><input type="radio" name="AssignmentCompletionStatus" value="true" required />
+        <label>Incomplete:</label><input type="radio" name="AssignmentCompletionStatus" value="false" required checked />
+    }
+
+    <input type="submit" placeholder="Submit Changes" />
 </form>

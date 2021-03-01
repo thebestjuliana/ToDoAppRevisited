@@ -96,3 +96,5 @@ C:\Users\sheeh\source\repos\ToDoListManagerRevisited\ToDoListManagerRevisited\ob
 C:\Users\sheeh\source\repos\ToDoListManagerRevisited\ToDoListManagerRevisited\obj\Debug\netcoreapp3.1\Razor\Views\CapstoneToDoList\Update.cshtml.g.cs
 C:\Users\sheeh\source\repos\ToDoListManagerRevisited\ToDoListManagerRevisited\obj\Debug\netcoreapp3.1\Razor\Views\CapstoneToDoList\ViewAll.cshtml.g.cs
 C:\Users\sheeh\source\repos\ToDoListManagerRevisited\ToDoListManagerRevisited\obj\Debug\netcoreapp3.1\Razor\Views\CapstoneToDoList\Delete.cshtml.g.cs
+C:\Users\sheeh\source\repos\ToDoListManagerRevisited\ToDoListManagerRevisited\obj\Debug\netcoreapp3.1\Razor\Views\CapstoneToDoList\Error.cshtml.g.cs
+C:\Users\sheeh\source\repos\ToDoListManagerRevisited\ToDoListManagerRevisited\obj\Debug\netcoreapp3.1\Razor\Views\CapstoneToDoList\MarkComplete.cshtml.g.cs
