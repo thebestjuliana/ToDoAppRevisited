@@ -1,0 +1,32 @@
+﻿
+    @model List<Assignment>
+    @{
+        bool isEmpty = !Model.Any();
+
+        if (isEmpty)
+        {
+            <h2>You Don't have any Complete Tasks to view</h2>
+            <a asp-action="Index" asp-controller="CapstoneToDoList">
+                <button>
+                    Return Home
+                </button>
+            </a>
+        }
+        else
+        {
+            <h2>Select One of Your Task(s) to View</h2>
+            <form method="post">
+
+                @foreach (Assignment assignment in Model)
+                {
+                    <label>Assignment #@assignment.AssignmentId</label>
+                    <input type="radio" name="AssignmentId" value="@assignment.AssignmentId" required />
+                    <p>@assignment.AssignmentDescription</p>
+
+                    <br />
+                }
+
+                <input type="submit" value="View Task" />
+            </form>
+        }
+    }

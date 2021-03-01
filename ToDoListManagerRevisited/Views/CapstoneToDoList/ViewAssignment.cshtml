@@ -32,7 +32,7 @@ else
 </a>
 
 
-<a asp-action="MarkComplete" asp-controller="CapstoneToDoList">
+<a asp-action="MarkComplete" asp-controller="CapstoneToDoList" asp-route-id="@Model.AssignmentId">
 
     @if (Model.AssignmentCompletionStatus == false)
     {<button>

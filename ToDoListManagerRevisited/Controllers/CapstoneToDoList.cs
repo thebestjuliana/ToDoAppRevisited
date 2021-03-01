@@ -106,6 +106,51 @@ namespace ToDoListManagerRevisited.Controllers
             
             return View(assignment);
         }
+        [HttpPost]
+
+        public IActionResult MarkComplete(Assignment assignment)
+        {
+            if (ModelState.IsValid)
+            {
+                _capstoneToDoList.Assignment.Update(assignment);
+                _capstoneToDoList.SaveChanges();
+                return RedirectToAction("ViewAssignment", assignment);
+            }
+            return RedirectToAction("Error");
+        }
+        public IActionResult ViewIncomplete()
+        {
+            return View(_capstoneToDoList.Assignment.Where(x => x.AssignedUserName == User.Identity.Name && x.AssignmentCompletionStatus ==false).ToList());
+        }
+
+        [HttpPost]
+        public IActionResult ViewIncomplete(int AssignmentId)
+        {
+            Assignment assignment = _capstoneToDoList.Assignment.Find(AssignmentId);
+            return RedirectToAction("ViewAssignment", assignment);
+        }
+        public IActionResult ViewComplete()
+        {
+            return View(_capstoneToDoList.Assignment.Where(x => x.AssignedUserName == User.Identity.Name && x.AssignmentCompletionStatus == true).ToList());
+        }
+
+        [HttpPost]
+        public IActionResult ViewComplete(int AssignmentId)
+        {
+            Assignment assignment = _capstoneToDoList.Assignment.Find(AssignmentId);
+            return RedirectToAction("ViewAssignment", assignment);
+        }
+
+        public IActionResult FilterByDate(DateTime startDate, DateTime endDate)
+        {
+            return View(_capstoneToDoList.Assignment.Where(x => x.AssignedUserName == User.Identity.Name && x.AssignmentDueDate >= startDate && x.AssignmentDueDate <= endDate).ToList());
+        }
+        
+        public IActionResult FilterId(int AssignmentId)
+        {
+            Assignment assignment = _capstoneToDoList.Assignment.Find(AssignmentId);
+            return RedirectToAction("ViewAssignment", assignment);
+        }
 
     }
 }

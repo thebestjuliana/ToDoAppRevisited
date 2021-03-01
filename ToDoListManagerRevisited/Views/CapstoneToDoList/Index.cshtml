@@ -4,7 +4,17 @@
         <li>Like your Crud actions</li>
         <li><a href="/CapstoneToDoList/CreateAssignment">Create a new to do item</a></li>
         <li><a href="/CapstoneToDoList/ViewAll">Read all the to do items</a></li>
-        <li>Update the to do items</li>
-        <li>Delete the to Do items</li>
+        <li><a href="/CapstoneToDoList/ViewComplete">Read all the to do items</a></li>
+        <li><a href="/CapstoneToDoList/ViewIncomplete">Read all the to do items</a></li>
+
     </ul>
+    <form asp-controller="CapstoneToDoList" asp-action="FilterByDate">
+        <label>View all to do items between </label>
+        <label>Start Date</label>
+        <input type="date" name="startDate" required />
+        <label>End Date</label>
+        <input type="date" name="endDate" required />
+        <input type="submit" value="Search" />
+
+    </form>
 </p>

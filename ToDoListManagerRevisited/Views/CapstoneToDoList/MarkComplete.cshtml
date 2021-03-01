@@ -1,4 +1,12 @@
 ﻿@model Assignment
+<form method="post">
+    @Html.HiddenFor(x => x.AssignmentDueDate)
+    @Html.HiddenFor(x => x.AssignmentId)
+    @Html.HiddenFor(x => x.AssignedUserName)
+    @Html.HiddenFor(x => x.AssignmentDescription)
+    <h4>Mark Task @Model.AssignmentId Complete Here:</h4>
+    <label>Complete:</label><input type="radio" name="AssignmentCompletionStatus" value="true" required />
+    <label>Incomplete:</label><input type="radio" name="AssignmentCompletionStatus" value="false" required />
 
-
-<p>Model.AssignmentDescription</p>
+    <input type="submit" value="Submit Changes" />
+</form>
