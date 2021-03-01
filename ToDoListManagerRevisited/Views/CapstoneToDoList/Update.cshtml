@@ -8,28 +8,21 @@
     }
 </style>
 <form method="post">
-    <Label>Task Number</Label>
-    <input type="number" name="AssignmentId" value="@Model.AssignmentId" placeholder="@Model.AssignmentId" readonly />
+    <Label>Due Date: @Model.AssignmentDueDate</Label>
+    @Html.HiddenFor(x => x.AssignmentId)
+    @Html.HiddenFor(x => x.AssignmentCompletionStatus)
+    @Html.HiddenFor(x => x.AssignmentDueDate)
+    @Html.HiddenFor(x => x.AssignedUserName)
 
-    <Label>Due Date:</Label>
-    <input type="datetime" name="AssignmentDueDate" value="@Model.AssignmentDueDate" />
-    
+
     <br />
+    <label>Description: </label>
     <input id="Description" type="text" name="AssignmentDescription" placeholder="Task Description" value="@Model.AssignmentDescription" />
     <br />
-    <label>Assigned User:</label>
-    <input type="text" name="AssignedUserName" value="@Model.AssignedUserName" readonly />
-    <label>Task Complete:</label>
-    @if (Model.AssignmentCompletionStatus == true)
-    {
-        <label>Complete:</label><input type="radio" name="AssignmentCompletionStatus" value="true" required checked />
-        <label>Incomplete:</label><input type="radio" name="AssignmentCompletionStatus" value="false" required />
-    }
-    else
-    {
-        <label>Complete:</label><input type="radio" name="AssignmentCompletionStatus" value="true" required />
-        <label>Incomplete:</label><input type="radio" name="AssignmentCompletionStatus" value="false" required checked />
-    }
+    <label>Assigned User: @Model.AssignedUserName</label>
+    <br />
+    <label>Task Complete: @Model.AssignmentCompletionStatus</label>
 
-    <input type="submit" placeholder="Submit Changes" />
+    <br />
+    <input type="submit" value="Submit Changes" />
 </form>

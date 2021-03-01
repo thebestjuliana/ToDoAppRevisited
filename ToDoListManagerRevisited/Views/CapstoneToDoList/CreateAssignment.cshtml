@@ -4,29 +4,26 @@
 <h2>Add a new task to the To Do List!</h2>
 <style>
     #Description {
-        height: 100px;
+        width: 500px;
         text-align: left;
     }
 </style>
 <form method="post">
-    <label>Task Due Date</label>
+    <label>Task Due Date: </label>
     <br />
     <input type="date" name="AssignmentDueDate" required autofocus>
     <br />
+    <br />  
     <input id="Description" type="text" name="AssignmentDescription" placeholder="Task Description" required />
     <br />
-    <label>Select assigned User:</label>
+    <br />  
+    <label>Assigned User(You):</label>
     <br />
-    @*<select name="">*@
-    @*<input type="text" name="AssignedUserName" value="@Model.Where(x => x.UserName == User.Identity.Name)" />
-        <option value="" disabled>--Select a User to Assign to this Task--</option>*@
-
     @foreach (AspNetUsers users in Model.Where(x => x.UserName == User.Identity.Name))
     {
-
-        <input type="text" name="AssignedUserName" value="@users.UserName" readonly/>
-        @*<option value="@users.UserName">@users.UserName</option>*@
+        <input type="text" name="AssignedUserName" value="@users.UserName" readonly />
     }
-    @*</select>*@
-    <input type="submit" />
+<br />  
+<br />
+    <input type="submit" name="Create"/>
 </form>

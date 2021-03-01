@@ -152,5 +152,23 @@ namespace ToDoListManagerRevisited.Controllers
             return RedirectToAction("ViewAssignment", assignment);
         }
 
+        public IActionResult UpdateDate(int id)
+        {
+            Assignment assignment = _capstoneToDoList.Assignment.Find(id);
+
+            return View(assignment);
+        }
+        [HttpPost]
+
+        public IActionResult UpdateDate(Assignment assignment)
+        {
+            if (ModelState.IsValid)
+            {
+                _capstoneToDoList.Assignment.Update(assignment);
+                _capstoneToDoList.SaveChanges();
+                return RedirectToAction("ViewAssignment", assignment);
+            }
+            return RedirectToAction("Error");
+        }
     }
 }

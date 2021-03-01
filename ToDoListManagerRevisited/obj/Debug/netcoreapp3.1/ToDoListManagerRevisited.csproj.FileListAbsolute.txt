@@ -101,3 +101,4 @@ C:\Users\sheeh\source\repos\ToDoListManagerRevisited\ToDoListManagerRevisited\ob
 C:\Users\sheeh\source\repos\ToDoListManagerRevisited\ToDoListManagerRevisited\obj\Debug\netcoreapp3.1\Razor\Views\CapstoneToDoList\ViewIncomplete.cshtml.g.cs
 C:\Users\sheeh\source\repos\ToDoListManagerRevisited\ToDoListManagerRevisited\obj\Debug\netcoreapp3.1\Razor\Views\CapstoneToDoList\ViewComplete.cshtml.g.cs
 C:\Users\sheeh\source\repos\ToDoListManagerRevisited\ToDoListManagerRevisited\obj\Debug\netcoreapp3.1\Razor\Views\CapstoneToDoList\FilterByDate.cshtml.g.cs
+C:\Users\sheeh\source\repos\ToDoListManagerRevisited\ToDoListManagerRevisited\obj\Debug\netcoreapp3.1\Razor\Views\CapstoneToDoList\UpdateDate.cshtml.g.cs

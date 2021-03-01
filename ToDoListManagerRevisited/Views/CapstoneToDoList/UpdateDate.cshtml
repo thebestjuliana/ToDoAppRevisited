@@ -1,0 +1,17 @@
+﻿@model Assignment
+    <form method="post">
+        @Html.HiddenFor(x => x.AssignmentCompletionStatus)
+        @Html.HiddenFor(x => x.AssignmentId)
+        @Html.HiddenFor(x => x.AssignedUserName)
+        @Html.HiddenFor(x => x.AssignmentDescription)
+        <h4>Enter new Due Date Here:</h4>
+
+        <input type="date" name="AssignmentDueDate" required/>
+
+        <input type="submit" value="Submit Changes" />
+    </form>
+    <a asp-action="Index" asp-controller="CapstoneToDoList">
+        <button>
+            Cancel/Return Home
+        </button>
+    </a>
