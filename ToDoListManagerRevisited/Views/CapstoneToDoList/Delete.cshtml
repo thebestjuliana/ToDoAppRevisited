@@ -8,11 +8,11 @@
         <label>Assigned User:</label>
         <input type="text" name="AssignedUserName" value="@Model.AssignedUserName" readonly />
         <p>Are you sure you wish to delete this? </p>
-        <input type="submit"name="Delete" onclick="return confirm('Are you REALLY sure you want to delete this?')" />
+        <input type="submit"value="Delete" onclick="return confirm('Are you REALLY sure you want to delete this?')" />
         
 </form>
 <a asp-action="Index" asp-controller="CapstoneToDoList">
     <button>
-        Cancel
+        Cancel/Return Home
     </button>
 </a>
